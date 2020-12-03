@@ -1,3 +1,5 @@
 /.gradle/
 /.idea/
 /build/
+/src/main/webapp/admin/assets/
+/src/main/java/dao/DBConnection.java

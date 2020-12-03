@@ -20,17 +20,13 @@ import java.util.List;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/administrator/customers")
 public class CustomerServlet extends HttpServlet {
-    private CustomerDao customerDAO;
-    private int currentPage = 1;
-    private final double recordsPerPage = 15;
-    private double countCustomers;
-    private double countPages;
+    private CustomerDao customerDao;
+    private HttpSession session;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         Connection conn = DBConnection.getConnection();
-        customerDAO = new CustomerDao(conn);
-        System.out.println("Init Customer DAO...");
+        customerDao = new CustomerDao(conn);
     }
 
     @Override
@@ -39,17 +35,16 @@ public class CustomerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         processRequest(req, resp);
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) {
-        HttpSession session = req.getSession();
+        session = req.getSession();
         try {
-            // Kiểm tra trạng thái đăng nhập
-//            if (session.getAttribute("user") == null) {
-//                resp.sendRedirect("/login");
-//            } else {
+            if (session.getAttribute("user") == null) {
+                resp.sendRedirect("/administrator/login");
+            } else {
                 String action = (req.getParameter("act") != null) ? req.getParameter("act") : "";
                 switch (action) {
                     case "create":
@@ -73,7 +68,7 @@ public class CustomerServlet extends HttpServlet {
                     default:
                         showAllCustomers(req, resp);
                 }
-//            }
+            }
         } catch (SQLException | ServletException | IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +79,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void storeCustomer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        HttpSession session = req.getSession();
+        session = req.getSession();
         List<String> message = new ArrayList<>();
 
         String name = req.getParameter("name");
@@ -101,7 +96,7 @@ public class CustomerServlet extends HttpServlet {
         if (!confirm.equals(password)) {
             message.add("Confirm password doesn't match");
         }
-        if (customerDAO.checkExistEmail(email)) {
+        if (customerDao.checkExistEmail(email)) {
             message.add("Email is already exists");
         }
         if (message.size() == 0) {
@@ -114,28 +109,27 @@ public class CustomerServlet extends HttpServlet {
             customer.setPassword(password);
             customer.setStatus(status);
 
-            if (customerDAO.add(customer)) {
+            if (customerDao.add(customer)) {
                 session.setAttribute("msg", "<div class=\"alert alert alert-success\">New customer created successfully.</div>");
             } else {
                 session.setAttribute("msg", "<div class=\"alert alert alert-danger\">INSERT fails.</div>");
             }
         } else {
-            String errors = "<div class=\"alert alert-danger\">\n" +
-                    "<ul>\n";
+            StringBuilder errors = new StringBuilder("<div class=\"alert alert-danger\">\n" +
+                    "<ul>\n");
             for (String msg: message) {
-                errors += "<li>" + msg + "</li>\n";
+                errors.append("<li>").append(msg).append("</li>\n");
             }
-            errors += "</ul>\n" +
-                    "</div>";
-            session.setAttribute("msg", errors);
+            errors.append("</ul>\n" + "</div>");
+            session.setAttribute("msg", errors.toString());
         }
         resp.sendRedirect("/administrator/customers?act=create");
     }
 
     private void editCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        session = req.getSession();
         int id = Integer.parseInt(req.getParameter("id"));
-        Customer customer = customerDAO.findById(id);
+        Customer customer = customerDao.findById(id);
         if (customer == null) {
             session.setAttribute("msg", "<div class=\"alert alert alert-danger\">Customer not found.</div>");
             resp.sendRedirect("/administrator/customers?act=index");
@@ -146,7 +140,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void updateCustomer(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
-        HttpSession session = req.getSession();
+        session = req.getSession();
         List<String> message = new ArrayList<>();
 
         int id = Integer.parseInt(req.getParameter("id"));
@@ -168,37 +162,36 @@ public class CustomerServlet extends HttpServlet {
                 message.add("Confirm password doesn't match");
             }
         }
-        Customer oldCustomer = customerDAO.findById(id);
-        if (customerDAO.checkExistEmail(customer.getEmail()) && !oldCustomer.getEmail().equals(customer.getEmail())) {
+        Customer oldCustomer = customerDao.findById(id);
+        if (customerDao.checkExistEmail(customer.getEmail()) && !oldCustomer.getEmail().equals(customer.getEmail())) {
             message.add("Email is already exists");
         }
         if (message.size() == 0) {
-            if (customerDAO.edit(customer)) {
+            if (customerDao.edit(customer)) {
                 session.setAttribute("msg", "<div class=\"alert alert alert-success\">Record updated successfully.</div>");
             } else {
                 session.setAttribute("msg", "<div class=\"alert alert alert-danger\">UPDATE fails.</div>");
             }
         } else {
-            String errors = "<div class=\"alert alert-danger\">\n" +
-                    "<ul>\n";
+            StringBuilder errors = new StringBuilder("<div class=\"alert alert-danger\">\n" +
+                    "<ul>\n");
             for (String msg: message) {
-                errors += "<li>" + msg + "</li>\n";
+                errors.append("<li>").append(msg).append("</li>\n");
             }
-            errors += "</ul>\n" +
-                    "</div>";
-            session.setAttribute("msg", errors);
+            errors.append("</ul>\n" + "</div>");
+            session.setAttribute("msg", errors.toString());
         }
         resp.sendRedirect("/administrator/customers?act=edit&id=" + id);
     }
 
     private void deleteCustomer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        HttpSession session = req.getSession();
+        session = req.getSession();
         int id = Integer.parseInt(req.getParameter("id"));
-        Customer customer = customerDAO.findById(id);
+        Customer customer = customerDao.findById(id);
         if (customer == null) {
             session.setAttribute("msg", "<div class=\"alert alert alert-danger\">Customer not found.</div>");
         } else {
-            if (customerDAO.remove(id)) {
+            if (customerDao.remove(id)) {
                 session.setAttribute("msg", "<div class=\"alert alert alert-success\">Record deleted successfully.</div>");
             } else {
                 session.setAttribute("msg", "<div class=\"alert alert alert-danger\">DELETE fails.</div>");
@@ -208,31 +201,38 @@ public class CustomerServlet extends HttpServlet {
     }
 
     public void showAllCustomers(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.countCustomers = customerDAO.getNumberOfRows();
-        this.countPages = (int) Math.ceil(countCustomers/recordsPerPage);
-        if (req.getParameter("currentPage") != null && (currentPage >= 1 && currentPage <= countPages)) {
-            this.currentPage = Integer.parseInt(req.getParameter("currentPage"));
+        int currentPage = 1;
+        double countCustomers = customerDao.getNumberOfRows();
+        double recordsPerPage = Double.parseDouble(req.getParameter("recordsPerPage"));
+        double countPages = Math.ceil(countCustomers / recordsPerPage);
+        if (req.getParameter("currentPage") != null && currentPage <= countPages) {
+            currentPage = Integer.parseInt(req.getParameter("currentPage"));
         }
-        List<Customer> customers = customerDAO.getRecords(currentPage, recordsPerPage);
-        extractCustomerList(req, resp, customers);
+        System.out.println("currentPage" + req.getParameter("currentPage"));
+        System.out.println("countPages: " + countPages);
+        List<Customer> customers = customerDao.getRecords(currentPage, recordsPerPage);
+        extractCustomer(req, resp, currentPage, (int) countCustomers, (int) recordsPerPage, (int) countPages, customers);
+    }
+
+    private void extractCustomer(HttpServletRequest req, HttpServletResponse resp, int currentPage, int countCustomers, int recordsPerPage, int countPages, List<Customer> customers) throws ServletException, IOException {
+        req.setAttribute("customers", customers);
+        req.setAttribute("countPages", countPages);
+        req.setAttribute("countCustomers", countCustomers);
+        req.setAttribute("currentPage", currentPage);
+        req.setAttribute("recordsPerPage", recordsPerPage);
+        req.getRequestDispatcher("/admin/customer/index.jsp").forward(req, resp);
     }
 
     private void searchCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.countCustomers = customerDAO.getNumberOfRows();
         String search = req.getParameter("query");
-        if (req.getParameter("currentPage") != null && (currentPage >= 1 && currentPage <= countPages)) {
-            this.currentPage = Integer.parseInt(req.getParameter("currentPage"));
+        int currentPage = 1;
+        double countCustomers = customerDao.getNumberOfRows();
+        double recordsPerPage = Double.parseDouble(req.getParameter("recordsPerPage"));
+        double countPages = Math.ceil(countCustomers / recordsPerPage);
+        if (req.getParameter("currentPage") != null && currentPage <= countPages) {
+            currentPage = Integer.parseInt(req.getParameter("currentPage"));
         }
-        List<Customer> customers = customerDAO.findByName(search, currentPage, recordsPerPage);
-        extractCustomerList(req, resp, customers);
-    }
-
-    private void extractCustomerList(HttpServletRequest req, HttpServletResponse resp, List<Customer> customers) throws ServletException, IOException {
-        req.setAttribute("customers", customers);
-        req.setAttribute("countPages", (int) countPages);
-        req.setAttribute("countCustomers", (int) countCustomers);
-        req.setAttribute("currentPage", currentPage);
-        req.setAttribute("recordsPerPage", (int) recordsPerPage);
-        req.getRequestDispatcher("/admin/customer/index.jsp").forward(req, resp);
+        List<Customer> customers = customerDao.findByName(search, currentPage, recordsPerPage);
+        extractCustomer(req, resp, currentPage, (int) countCustomers, (int) recordsPerPage, (int) countPages, customers);
     }
 }

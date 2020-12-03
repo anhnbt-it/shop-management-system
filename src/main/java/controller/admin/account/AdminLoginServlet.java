@@ -16,15 +16,16 @@ import java.sql.Connection;
 @WebServlet(name = "AdminLoginServlet", urlPatterns = "/administrator/login")
 public class AdminLoginServlet extends HttpServlet {
     private AdminDao adminDao;
+    private HttpSession session;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         Connection conn = DBConnection.getConnection();
         adminDao = new AdminDao(conn);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        HttpSession session = req.getSession();
+        session = req.getSession();
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -40,8 +41,7 @@ public class AdminLoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Kiểm tra trạng thái đăng nhập
-        HttpSession session = req.getSession();
+        session = req.getSession();
         if (session.getAttribute("user") != null) {
             resp.sendRedirect("/home");
         } else {

@@ -22,14 +22,12 @@
                             <%session.removeAttribute("msg");%>
                         </c:if>
                         <div class="form-group">
-                            <label for="username">Username <span
-                                    class="text-danger">*</span>:</label>
+                            <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username"
                                    placeholder="Username" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password <span
-                                    class="text-danger">*</span>:</label>
+                            <label for="password">Password</label>
                             <input type="text" class="form-control" name="password" id="password"
                                    placeholder="Password" required>
                         </div>

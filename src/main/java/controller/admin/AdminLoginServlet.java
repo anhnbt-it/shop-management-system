@@ -1,7 +1,7 @@
-package controller.admin.account;
+package controller.admin;
 
 import dao.DBConnection;
-import dao.admin.AdminDao;
+import dao.AdminDao;
 import model.admin.Admin;
 
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ public class AdminLoginServlet extends HttpServlet {
     private AdminDao adminDao;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         Connection conn = DBConnection.getConnection();
         adminDao = new AdminDao(conn);
     }
@@ -40,7 +40,6 @@ public class AdminLoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Kiểm tra trạng thái đăng nhập
         HttpSession session = req.getSession();
         if (session.getAttribute("user") != null) {
             resp.sendRedirect("/home");

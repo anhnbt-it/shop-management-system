@@ -22,11 +22,16 @@ import java.util.List;
 public class CustomerServlet extends HttpServlet {
     private CustomerDao customerDao;
     private HttpSession session;
+    private int currentPage;
+    private int recordsPerPage;
 
     @Override
     public void init() {
         Connection conn = DBConnection.getConnection();
         customerDao = new CustomerDao(conn);
+
+        currentPage = 1;
+        recordsPerPage = 15;
     }
 
     @Override
@@ -42,7 +47,7 @@ public class CustomerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) {
         session = req.getSession();
         try {
-            if (session.getAttribute("user") == null) {
+            if (session.getAttribute("admin") == null) {
                 resp.sendRedirect("/administrator/login");
             } else {
                 String action = (req.getParameter("act") != null) ? req.getParameter("act") : "";
@@ -194,24 +199,23 @@ public class CustomerServlet extends HttpServlet {
             if (customerDao.remove(id)) {
                 session.setAttribute("msg", "<div class=\"alert alert alert-success\">Record deleted successfully.</div>");
             } else {
-                session.setAttribute("msg", "<div class=\"alert alert alert-danger\">DELETE fails.</div>");
+                session.setAttribute("msg", "<div class=\"alert alert alert-danger\">Cannot delete or update a parent row: a foreign key constraint fails.</div>");
             }
         }
         resp.sendRedirect("/administrator/customers?act=index");
     }
 
     public void showAllCustomers(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int currentPage = 1;
-        double countCustomers = customerDao.getNumberOfRows();
-        double recordsPerPage = Double.parseDouble(req.getParameter("recordsPerPage"));
-        double countPages = Math.ceil(countCustomers / recordsPerPage);
-        if (req.getParameter("currentPage") != null && currentPage <= countPages) {
+        double numberOfRows = customerDao.getNumberOfRows();
+
+        if (req.getParameter("currentPage") != null && req.getParameter("recordsPerPage") != null) {
             currentPage = Integer.parseInt(req.getParameter("currentPage"));
+            recordsPerPage = Integer.parseInt(req.getParameter("recordsPerPage"));
         }
-        System.out.println("currentPage" + req.getParameter("currentPage"));
-        System.out.println("countPages: " + countPages);
+
+        double countPages = Math.ceil(numberOfRows / recordsPerPage);
         List<Customer> customers = customerDao.getRecords(currentPage, recordsPerPage);
-        extractCustomer(req, resp, currentPage, (int) countCustomers, (int) recordsPerPage, (int) countPages, customers);
+        extractCustomer(req, resp, currentPage, customers.size(), recordsPerPage, (int) countPages, customers);
     }
 
     private void extractCustomer(HttpServletRequest req, HttpServletResponse resp, int currentPage, int countCustomers, int recordsPerPage, int countPages, List<Customer> customers) throws ServletException, IOException {
@@ -225,14 +229,16 @@ public class CustomerServlet extends HttpServlet {
 
     private void searchCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String search = req.getParameter("query");
-        int currentPage = 1;
-        double countCustomers = customerDao.getNumberOfRows();
-        double recordsPerPage = Double.parseDouble(req.getParameter("recordsPerPage"));
-        double countPages = Math.ceil(countCustomers / recordsPerPage);
-        if (req.getParameter("currentPage") != null && currentPage <= countPages) {
+        double numberOfRows = customerDao.getNumberOfRows();
+
+        if (req.getParameter("currentPage") != null && req.getParameter("recordsPerPage") != null) {
             currentPage = Integer.parseInt(req.getParameter("currentPage"));
+            recordsPerPage = Integer.parseInt(req.getParameter("recordsPerPage"));
         }
+
+        double countPages = Math.ceil(numberOfRows / recordsPerPage);
+
         List<Customer> customers = customerDao.findByName(search, currentPage, recordsPerPage);
-        extractCustomer(req, resp, currentPage, (int) countCustomers, (int) recordsPerPage, (int) countPages, customers);
+        extractCustomer(req, resp, currentPage, customers.size(), recordsPerPage, (int) countPages, customers);
     }
 }

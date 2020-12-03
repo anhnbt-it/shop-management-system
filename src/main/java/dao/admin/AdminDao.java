@@ -72,6 +72,7 @@ public class AdminDao implements IDao<Admin> {
     public Admin extractUserResultset(ResultSet rs) throws SQLException {
         Admin admin = new Admin();
         admin.setId(rs.getInt("id"));
+        admin.setUsername(rs.getString("username"));
         admin.setPassword(rs.getString("password"));
         admin.setRoles(rs.getInt("roles"));
         admin.setCreated(rs.getDate("created_at"));

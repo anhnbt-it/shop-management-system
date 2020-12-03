@@ -201,7 +201,7 @@ public class CustomerServlet extends HttpServlet {
             if (customerDAO.remove(id)) {
                 session.setAttribute("msg", "<div class=\"alert alert alert-success\">Record deleted successfully.</div>");
             } else {
-                session.setAttribute("msg", "<div class=\"alert alert alert-danger\">DELETE fails.</div>");
+                session.setAttribute("msg", "<div class=\"alert alert alert-danger\">Cannot delete or update a parent row: a foreign key constraint fails </div>");
             }
         }
         resp.sendRedirect("/administrator/customers?act=index");

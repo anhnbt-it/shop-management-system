@@ -3,3 +3,4 @@
 /build/
 /src/main/webapp/admin/assets/
 /src/main/java/dao/DBConnection.java
+/src/main/webapp/template/

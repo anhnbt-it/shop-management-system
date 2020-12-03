@@ -1,7 +1,7 @@
-package controller.admin.account;
+package controller.admin;
 
 import dao.DBConnection;
-import dao.admin.AdminDao;
+import dao.AdminDao;
 import model.admin.Admin;
 
 import javax.servlet.ServletException;

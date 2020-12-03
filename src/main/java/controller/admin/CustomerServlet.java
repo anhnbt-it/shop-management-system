@@ -1,6 +1,6 @@
-package controller.admin.account;
+package controller.admin;
 
-import dao.admin.CustomerDao;
+import dao.CustomerDao;
 import dao.DBConnection;
 import model.admin.Customer;
 

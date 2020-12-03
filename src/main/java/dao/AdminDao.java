@@ -1,7 +1,5 @@
-package dao.admin;
+package dao;
 
-import dao.DBConnection;
-import dao.IDao;
 import model.admin.Admin;
 
 import java.sql.Connection;

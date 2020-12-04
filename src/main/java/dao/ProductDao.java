@@ -1,13 +1,9 @@
 package dao;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-import model.entities.Order;
 import model.entities.Product;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductDao implements iProductDao {
     private final DBConnection dbConnection = new DBConnection();
@@ -157,10 +153,10 @@ public class ProductDao implements iProductDao {
         return products;
     }
 
-    public static final String SORT_PRODUCT_N_A="SELECT * FROM petshop.products order by name asc";
-    public static final String SORT_PRODUCT_N_D="SELECT * FROM petshop.products order by name desc";
-    public static final String SORT_PRODUCT_P_A="SELECT * FROM petshop.products order by price asc";
-    public static final String SORT_PRODUCT_P_D="SELECT * FROM petshop.products order by price desc";
+    public static final String SORT_PRODUCT_N_A="SELECT * FROM products order by name asc";
+    public static final String SORT_PRODUCT_N_D="SELECT * FROM products order by name desc";
+    public static final String SORT_PRODUCT_P_A="SELECT * FROM products order by price asc";
+    public static final String SORT_PRODUCT_P_D="SELECT * FROM products order by price desc";
     public ArrayList<Product> sort_Product_N_A(){
         return sort_Product(SORT_PRODUCT_N_A);
     }
@@ -202,10 +198,10 @@ public class ProductDao implements iProductDao {
         return products;
     }
 
-    public static final String SORT_PRODUCT_CATE_ASC="SELECT * FROM petshop.products where category_id = ? order by name asc";
-    public static final String SORT_PRODUCT_CATE_DESC="SELECT * FROM petshop.products where category_id = ? order by name desc";
-    public static final String SORT_PRODUCT_CATE_P_A="SELECT * FROM petshop.products where category_id = ? order by price asc";
-    public static final String SORT_PRODUCT_CATE_P_D="SELECT * FROM petshop.products where category_id = ? order by price desc";
+    public static final String SORT_PRODUCT_CATE_ASC="SELECT * FROM products where category_id = ? order by name asc";
+    public static final String SORT_PRODUCT_CATE_DESC="SELECT * FROM products where category_id = ? order by name desc";
+    public static final String SORT_PRODUCT_CATE_P_A="SELECT * FROM products where category_id = ? order by price asc";
+    public static final String SORT_PRODUCT_CATE_P_D="SELECT * FROM products where category_id = ? order by price desc";
     public ArrayList<Product> sort_Product_Cate_NA(int id){
         return sort_Product_Cate(id, SORT_PRODUCT_CATE_ASC);
     }

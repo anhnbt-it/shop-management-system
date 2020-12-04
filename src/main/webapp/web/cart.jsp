@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
                     <a href="/cart?action=payment">
-                        <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                        <button class="btn btn-block btn-success text-uppercase">Checkout</button>
                     </a>
                 </div>
             </div>

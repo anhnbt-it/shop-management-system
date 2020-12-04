@@ -129,23 +129,6 @@
                                    style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i>
                                 </button>
                             </div>
-
-
-                                <%--                        <div class="discount ">--%>
-                                <%--                            <p>-10%</p>--%>
-                                <%--                        </div>--%>
-                                <%--                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>--%>
-                                <%--                        <div class="card-body cardBody">--%>
-                                <%--                            <h4 class="card-title">--%>
-                                <%--                                <a href="#">Item One</a>--%>
-                                <%--                            </h4>--%>
-                                <%--                            <h5 class="realPrice">$24.99</h5>--%>
-                                <%--                            <h5 class="price">$24.99</h5>--%>
-                                <%--                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>--%>
-                                <%--                        </div>--%>
-                                <%--                        <div class="card-footer">--%>
-                                <%--                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
-                                <%--                        </div>--%>
                         </div>
                     </div>
                 </c:forEach>

@@ -58,25 +58,28 @@
 
                 <div class="row">
 
-                    <c:forEach items='${requestScope["date"]}' var="product1">
+                    <c:forEach items='${requestScope["date"]}' var="product">
                         <div class="col-lg-4 col-md-6 mb-4">
 
                             <div class="card h-100 cardBorder">
 
                                 <div class="discount">
-                                    <p>- ${product1.getDiscount()}% </p>
+                                    <p>- ${product.getDiscount()}% </p>
                                 </div>
-                                <a href="/products?action=view&id=${product1.getId()}"><img class="card-img-top" src="<c:url value="${product1.getImg()}"/>" width="700" height="200" alt="loading"></a>
+                                <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product1.getImg()}"/>" width="700" height="200" alt="loading"></a>
                                 <div class="card-body cardBody">
                                     <h4 class="card-title">
-                                        <a href="/products?action=view&id=${product1.getId()}">${product1.getName()}</a>
+                                        <a href="/products?action=view&id=${product.getId()}">${product.getName()}</a>
                                     </h4>
-                                    <h5 class="realPrice">$ ${product1.getRealPrice()}</h5>
-                                    <h5 class="price">$${product1.getPrice()}</h5>
-                                    <p class="card-text"> ${product1.getDescription()}</p>
+                                    <h5 class="realPrice">$ ${product.getRealPrice()}</h5>
+                                    <h5 class="price">$${product.getPrice()}</h5>
+                                    <p class="card-text"> ${product.getDescription()}</p>
                                 </div>
                                 <div class="card-footer ml-auto">
-                                    <a class="nav-link" href="/cart?action=add&id=${product1.getId()}&page=home" style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i></a>
+                                    <button class="btn btn-warning" onclick="loadDoc(${product.getId()})"
+                                            style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i>
+                                    </button>
+<%--                                    <a class="nav-link" href="/cart?action=add&id=${product1.getId()}&page=home" style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i></a>--%>
                                 </div>
                             </div>
                         </div>
@@ -86,25 +89,28 @@
                 <a href="#"><h1>Sản phẩm bán chạy</h1></a>
                 <hr>
                 <div class="row">
-                    <c:forEach items='${requestScope["new"]}' var="product2">
+                    <c:forEach items='${requestScope["new"]}' var="product">
                         <div class="col-lg-4 col-md-6 mb-4">
 
                             <div class="card h-100 cardBorder">
 
                                 <div class="discount">
-                                    <p>- ${product2.getDiscount()}% </p>
+                                    <p>- ${product.getDiscount()}% </p>
                                 </div>
-                                <a href="/products?action=view&id=${product2.getId()}"><img class="card-img-top" src="<c:url value="${product2.getImg()}"/>" width="700" height="200" alt="loading"></a>
+                                <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product2.getImg()}"/>" width="700" height="200" alt="loading"></a>
                                 <div class="card-body cardBody">
                                     <h4 class="card-title">
-                                        <a href="/products?action=view&id=${product2.getId()}">${product2.getName()}</a>
+                                        <a href="/products?action=view&id=${product.getId()}">${product.getName()}</a>
                                     </h4>
-                                    <h5 class="realPrice">$ ${product2.getRealPrice()}</h5>
-                                    <h5 class="price">$${product2.getPrice()}</h5>
-                                    <p class="card-text"> ${product2.getDescription()}</p>
+                                    <h5 class="realPrice">$ ${product.getRealPrice()}</h5>
+                                    <h5 class="price">$${product.getPrice()}</h5>
+                                    <p class="card-text"> ${product.getDescription()}</p>
                                 </div>
                                 <div class="card-footer ml-auto">
-                                    <a class="nav-link" href="/cart?action=add&id=${product2.getId()}&page=home" style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i></a>
+                                    <button class="btn btn-warning" onclick="loadDoc(${product.getId()})"
+                                            style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i>
+                                    </button>
+<%--                                    <a class="nav-link" href="/cart?action=add&id=${product2.getId()}&page=home" style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i></a>--%>
                                 </div>
                             </div>
                         </div>

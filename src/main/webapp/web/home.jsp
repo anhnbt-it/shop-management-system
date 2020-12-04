@@ -161,4 +161,4 @@
         </div>
     </div><!-- /.row -->
 </div><!-- /.container -->
-<%@include file="/common/web/footer.jsp" %>
+<jsp:include page="/common/web/footer.jsp"></jsp:include>

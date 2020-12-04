@@ -23,9 +23,8 @@
         </div>
         <div class="col-md-6 col-sm-12">
             <h1><c:out value="${product.name}"/></h1>
-            <p>Price: <span class="font-weight-bold text-danger">${product.price}</span></p>
-            <p>Realprice: <span style="text-decoration-line: line-through">${requestScope.product.getRealPrice()}</span>
-            </p>
+            <p>Price: <span class="font-weight-bold text-danger" style="text-decoration-line: line-through">${product.price}</span></p>
+            <p>Realprice: <span class="font-weight-bold text-danger">${requestScope.product.getRealPrice()}</span></p>
             <p>Mô tả: ${product.getDescription()}</p>
             <button class="btn btn-primary" onclick="addToCart(${product.getId()})"><i class="fas fa-shopping-cart"></i>
                 Thêm vào giỏ hàng
@@ -74,4 +73,4 @@
     </div><!-- /.row -->
 </div>
 <!-- /.container -->
-<%@include file="/common/web/footer.jsp" %>
+<jsp:include page="/common/web/footer.jsp"></jsp:include>

@@ -5,146 +5,131 @@
   Time: 10:50 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/libs.jsp" %>
-<html>
-<head>
-    <title>Product</title>
-    <%--    <link rel="stylesheet" href="template/css/sidebar.css">--%>
-    <%--    <link rel="stylesheet" href="template/css/product/product.css">--%>
-    <%--    <link rel="stylesheet" href="template/bootstrap/css/bootstrap.css">--%>
-    <link href="<c:url value="/template/bootstrap/css/bootstrap.css"/>" rel="stylesheet">
-    <link href="<c:url value="/template/css/sidebar.css"/>" rel="stylesheet">
-    <link href="<c:url value="/template/css/product/product.css"/>" rel="stylesheet">
-</head>
-<body>
-<%@include file="/common/web/header.jsp" %>
-
-<div class="container">
-
-    <div class="row link">
-        <a href="/home"> Trang chủ</a> <span> &emsp; > &emsp; </span> <span> chó &emsp;</span>
-    </div>
-    <hr>
-    <!-- row 1 -->
-
+<c:set var="pageTitle" scope="request" value="Add New Customer"/>
+<jsp:include page="/common/web/header.jsp"></jsp:include>
+<div class="container" style="padding-top: 180px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
+            <li class="breadcrumb-item active"><a href="${pageContext.request.contextPath}/products">Sản phẩm</a></li>
+        </ol>
+    </nav>
     <div class="row">
-
         <div class="col-lg-3">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-dog mr-1"></i> Chó <i class="fas fa-arrow-down"></i>
+                            </button>
+                        </h2>
+                    </div>
 
-            <div class="nav-side-menu">
-                <div class="brand">Danh mục sản phẩm</div>
-                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-                <div class="menu-list">
-
-                    <ul id="menu-content" class="menu-content collapse out">
-
-                        <li data-toggle="collapse" data-target="#dog" class="collapsed">
-                            <a href="#"><i class="fas fa-dog mr-1"></i> Chó <span class="arrow"></span></a>
-                        </li>
-                        <ul class="sub-menu collapse" id="dog">
-                            <c:forEach var="categoryDog" items="${categoriesDog}">
-                                <li><a href="/products?idCategory=${categoryDog.getId()}"><c:out
-                                        value="${categoryDog.name}"/> </a></li>
-                            </c:forEach>
-
-                        </ul>
-
-                        <li data-toggle="collapse" data-target="#cat" class="collapsed">
-                            <a href="#"><i class="fas fa-cat mr-1"></i> Mèo <span class="arrow"></span></a>
-                        </li>
-                        <ul class="sub-menu collapse" id="cat">
-                            <c:forEach var="categoryCat" items="${categoriesCat}">
-                                <li><a href="/products?idCategory=${categoryCat.getId()}"><c:out
-                                        value="${categoryCat.name}"/> </a></li>
-                            </c:forEach>
-
-                        </ul>
-
-                    </ul>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <c:forEach var="categoryDog" items="${categoriesDog}">
+                                    <li><a href="/products?idCategory=${categoryDog.getId()}"><c:out
+                                            value="${categoryDog.name}"/> </a></li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                <i class="fas fa-cat mr-1"></i> Mèo <i class="fas fa-arrow-down"></i>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <c:forEach var="categoryCat" items="${categoriesCat}">
+                                    <li><a href="/products?idCategory=${categoryCat.getId()}"><c:out
+                                            value="${categoryCat.name}"/> </a></li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /.col-lg-3 -->
-
         <div class="col-lg-9">
-            <div>
-                <h2>Danh mục sản phẩm</h2>
-
-                <form action="/products" method="post">
-                    <input type="hidden" name="action" value="order">
-                    <input type="hidden" name="idCategory" value="${idCategory}">
-                    <div class="input-group mb-3 d-flex">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01" style="width: auto">Name</label>
-                        </div>
-                        <select name="sortByName" class="custom-select" id="inputGroupSelect01"
-                                style="height: calc(1.5em + 0.75rem + 10px)">
-                            <option selected>Choose...</option>
-                            <option value="1">A-Z</option>
-                            <option value="2">Z-A</option>
-                        </select>
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect02">Giá</label>
-                        </div>
-                        <select name="sortByPrice" class="custom-select" id="inputGroupSelect02"
-                                style="height: calc(1.5em + 0.75rem + 10px)">
-                            <option selected>Choose...</option>
-                            <option value="3">Giá cao nhất</option>
-                            <option value="4">Giá thấp nhất</option>
-                        </select>
-                        <div class="ml-auto">
-                            <input type="submit" value="Sắp xếp"
-                                   style="border-radius: 30px; color: blue; background: orange; font-weight: bold">
+            <h2>Danh mục sản phẩm</h2>
+            <form action="${pageContext.request.contextPath}/products" method="post">
+                <input type="hidden" name="action" value="order">
+                <input type="hidden" name="idCategory" value="${idCategory}">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label class="sr-only" for="sortByName">Name</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Name</div>
+                            </div>
+                            <select name="sortByName" class="form-control" id="sortByName">
+                                <option selected>Choose...</option>
+                                <option value="1">A-Z</option>
+                                <option value="2">Z-A</option>
+                            </select>
                         </div>
                     </div>
-                </form>
-
-            </div>
-
+                    <div class="col-auto">
+                        <label class="sr-only" for="sortByPrice">Name</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Name</div>
+                            </div>
+                            <select name="sortByPrice" class="form-control" id="sortByPrice">
+                                <option selected>Choose...</option>
+                                <option value="3">Giá cao nhất</option>
+                                <option value="4">Giá thấp nhất</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Sắp xếp</button>
+                    </div>
+                </div>
+            </form>
             <div class="row">
-
                 <c:forEach items='${requestScope["products"]}' var="product">
-                    <div class="col-lg-4 col-md-6 mb-4">
-
-                        <div class="card h-100 cardBorder">
-
-                            <div class="discount">
-                                <p>- ${product.getDiscount()}% </p>
-                            </div>
-                            <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product.getImg()}"/>" width="700"
-                                             height="200" alt="loading"></a>
-                            <div class="card-body cardBody">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="card shadow h-100">
+                            <span class="display-4 position-absolute badge badge-danger">-${product.getDiscount()}%</span>
+                            <a href="${pageContext.request.contextPath}/products?action=view&id=${product.getId()}">
+                                <img
+                                        class="card-img-top"
+                                        src="<c:url value="${product.getImg()}"/>"
+                                        width="700" height="200"
+                                        alt="loading"></a>
+                            <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="/products?action=view&id=${product.getId()}">${product.getName()}</a>
+                                    <a href="${pageContext.request.contextPath}/products?action=view&id=${product.getId()}">${product.getName()}</a>
                                 </h4>
-                                <h5 class="realPrice">$ ${product.getRealPrice()}</h5>
-                                <h5 class="price">$${product.getPrice()}</h5>
-                                <p class="card-text"> ${product.getDescription()}</p>
+                                <span class="text-danger">$ ${product.getRealPrice()}</span> / <span class="text-dark"
+                                                                                                     style="text-decoration-line: line-through;">$ ${product.getPrice()}</span>
+                                <p class="card-text">${product.getDescription()}</p>
                             </div>
-                            <div class="card-footer ml-auto">
-                                <button class="btn btn-warning" onclick="loadDoc(${product.getId()})"
-                                   style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
+                            <button class="btn btn-success btn-block text-white" onclick="loadDoc(${product.getId()})">
+                                <i
+                                        class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                            </button>
                         </div>
-                    </div>
+                    </div><!-- /.col-lg-4 -->
                 </c:forEach>
-
-            </div>
-            <!-- /.row -->
-
-        </div>
-        <!-- /.col-lg-9 -->
-
-    </div>
-    <!-- /.row -->
-
-</div>
-
+            </div><!-- /.row -->
+        </div><!-- /.col-lg-9 -->
+    </div><!-- /.row -->
+</div><!-- /.container -->
 <%@include file="/common/web/footer.jsp" %>
-</body>
-</html>
-

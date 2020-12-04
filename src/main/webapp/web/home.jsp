@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="pageTitle" scope="request" value="Add New Customer"/>
 <jsp:include page="/common/web/header.jsp"></jsp:include>
-<div class="container" style="padding-top: 175px;">
+<div class="container" style="padding-top: 180px;">
     <c:if test="${requestScope['discount'] != null}">
         <div class="row">
             <div class="col-sm-12">

@@ -82,27 +82,28 @@
         </div>
     </div>
 </div>
-<script src="https://kit.fontawesome.com/06afc5370d.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/assets/js/bootstrap.bundle.min.js"></script>
 <script>
-    function loadDoc(id) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("amount").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("POST", "/cart", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("action=add&id=" + id);
+    // Enable tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    function addToCart(id) {
+        $(document).ready(function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    $("#amount").html(this.responseText);
+                    $('.toast').toast('show')
+                }
+            };
+            xhttp.open("POST", "/cart", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("action=add&id=" + id);
+        });
     }
 </script>
 </body>

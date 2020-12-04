@@ -10,7 +10,11 @@
 <html>
 <head>
     <title>${pageTitle} - Pet Shop</title>
-    <link href="${pageContext.request.contextPath}/template/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="${pageContext.request.contextPath}/admin/assets/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="${pageContext.request.contextPath}/admin/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/admin/assets/images/cart.png" rel="icon">
     <link href="${pageContext.request.contextPath}/template/css/header-footer/header.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/template/css/header-footer/search.css" rel="stylesheet">
 </head>

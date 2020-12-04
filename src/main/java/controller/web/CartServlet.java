@@ -184,6 +184,7 @@ public class CartServlet extends HttpServlet {
                 session.setAttribute("order", order);
             }
         }
+        response.setContentType("text/plain");
         PrintWriter writer = response.getWriter();
         Order order = (Order) session.getAttribute("order");
         writer.print(order.getList().size());

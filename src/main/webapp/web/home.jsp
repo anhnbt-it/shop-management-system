@@ -77,7 +77,7 @@
                                   style="text-decoration-line: line-through;">$ ${product.getPrice()}</span>
                             <p class="card-text">${product.getDescription()}</p>
                         </div>
-                        <button class="btn btn-success btn-block text-white" onclick="loadDoc(${product.getId()})"><i
+                        <button class="btn btn-success btn-block text-white" onclick="addToCart(${product.getId()})"><i
                                 class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
                         </button>
                     </div>
@@ -112,7 +112,7 @@
                                   style="text-decoration-line: line-through;">$ ${product.getPrice()}</span>
                             <p class="card-text">${product.getDescription()}</p>
                         </div>
-                            <button class="btn btn-success btn-block text-white" onclick="loadDoc(${product.getId()})"><i
+                            <button class="btn btn-success btn-block text-white" onclick="addToCart(${product.getId()})"><i
                                     class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
                             </button>
                     </div>

@@ -22,19 +22,19 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(0).getId()}">
-                                <img class="img-fluid" src="<c:out value='${requestScope["discount"].get(0).getImg()}'/>"
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide3.jsp'/>"
                                      width="1100" height="300" alt="First slide">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(1).getId()}">
-                                <img class="img-fluid" src="<c:out value='${requestScope["discount"].get(1).getImg()}'/>"
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide1.png'/>"
                                      width="1100" height="300" alt="Second slide">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(2).getId()}">
-                                <img class="img-fluid" src="<c:out value='${requestScope["discount"].get(2).getImg()}'/>"
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide2.jsp'/>"
                                      width="1100" height="300" alt="Third slide">
                             </a>
                         </div>

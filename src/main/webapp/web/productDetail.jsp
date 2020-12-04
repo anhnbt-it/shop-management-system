@@ -45,10 +45,9 @@
 <%--            <form action="/cart?action=add&id=${product.getId()}&page=productDetail">--%>
 <%--                <input type="hidden" name="action" value="add">--%>
 <%--                <input type="hidden" name="action" value="add">--%>
-               <a href="/cart?action=add&id=${product.getId()}&page=productDetail">
-                   <button type="submit" class="btn btn-success">Them vao gio hang</button>
-               </a>
-<%--            </form>--%>
+            <button class="btn btn-primary" onclick="loadDoc(${product.getId()})"
+                    style="color: #c6c8ca; font-size: larger">Them vao gio hang</i>
+            </button>
 
             <hr>
         </div>
@@ -57,23 +56,25 @@
     <div>Các sản phẩm tương tự :</div>
     <hr>
     <div class="row">
-        <c:forEach var="product1" items="${products}">
+        <c:forEach var="product" items="${products}">
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-100 cardBorder">
                     <div class="discount">
                         <p>- ${product1.getDiscount()}% </p>
                     </div>
-                    <a href="/products?action=view&id=${product1.getId()}"><img class="card-img-top" src="<c:url value="${product.getImg()}"/>" height="200" alt="loading"></a>
+                    <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product.getImg()}"/>" height="200" alt="loading"></a>
                     <div class="card-body cardBody">
                         <h4 class="card-title">
-                            <a href="/products?action=view&id=${product1.getId()}">${product1.getName()}</a>
+                            <a href="/products?action=view&id=${product.getId()}">${product.getName()}</a>
                         </h4>
-                        <h5 class="realPrice">$ ${product1.getRealPrice()}</h5>
-                        <h5 class="price">$${product1.getPrice()}</h5>
-                        <p class="card-text"> ${product1.getDescription()}</p>
+                        <h5 class="realPrice">$ ${product.getRealPrice()}</h5>
+                        <h5 class="price">$${product.getPrice()}</h5>
+                        <p class="card-text"> ${product.getDescription()}</p>
                     </div>
                     <div class="card-footer ml-auto">
-                        <a class="nav-link" href="/cart?action=add&id=${product1.getId()}&page=product" style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i></a>
+                        <button class="btn btn-warning" onclick="loadDoc(${product.getId()})"
+                                style="color: #c6c8ca; font-size: larger"><i class="fas fa-shopping-cart"></i>
+                        </button>
                     </div>
                 </div>
             </div>

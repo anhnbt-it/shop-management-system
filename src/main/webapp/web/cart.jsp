@@ -39,57 +39,15 @@
                         <tbody>
                         <c:forEach items='${sessionScope.order.getList()}' var="orderDetail">
                             <tr>
-                                <td><img class="img-fluid" src="<c:url value="${orderDetail.getProduct().getImg()}"/>" width="30%" height="20%" /> </td>
+                                <td class="w-25"><img class="" src="<c:url value="${orderDetail.getProduct().getImg()}"/>" width="70%" height="100" style="border: 1px solid black" /> </td>
                                 <td>${orderDetail.getProduct().getName()}</td>
                                 <td>In stock</td>
-                                <td><input class="form-control" type="text" value="${orderDetail.getQuantity()}" /></td>
+                                <td style="text-align: center">${orderDetail.getQuantity()}</td>
+<%--                                <td><input class="form-control" type="text" value="${orderDetail.getQuantity()}" /></td>--%>
                                 <td class="text-right">$ ${orderDetail.getTotal()}</td>
-                                <td class="text-right"><a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a> </td>
+                                <td class="text-right"><a class="btn btn-sm btn-danger" href="/cart?action=del&id=${orderDetail.getProduct().getId()}"><i class="fa fa-trash"></i> </a> </td>
                             </tr>
                         </c:forEach>
-
-
-
-<%--                        <tr>--%>
-<%--                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>--%>
-<%--                            <td>Product Name Dada</td>--%>
-<%--                            <td>In stock</td>--%>
-<%--                            <td><input class="form-control" type="text" value="1" /></td>--%>
-<%--                            <td class="text-right">124,90 €</td>--%>
-<%--                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>--%>
-<%--                            <td>Product Name Toto</td>--%>
-<%--                            <td>In stock</td>--%>
-<%--                            <td><input class="form-control" type="text" value="1" /></td>--%>
-<%--                            <td class="text-right">33,90 €</td>--%>
-<%--                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>--%>
-<%--                            <td>Product Name Titi</td>--%>
-<%--                            <td>In stock</td>--%>
-<%--                            <td><input class="form-control" type="text" value="1" /></td>--%>
-<%--                            <td class="text-right">70,00 €</td>--%>
-<%--                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td></td>--%>
-<%--                            <td></td>--%>
-<%--                            <td></td>--%>
-<%--                            <td></td>--%>
-<%--                            <td>Sub-Total</td>--%>
-<%--                            <td class="text-right">$ ${sessionScope.order.getTotalOrder()}</td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td></td>--%>
-<%--                            <td></td>--%>
-<%--                            <td></td>--%>
-<%--                            <td></td>--%>
-<%--                            <td>Shipping</td>--%>
-<%--                            <td class="text-right">6,90 €</td>--%>
-<%--                        </tr>--%>
                         <tr>
                             <td></td>
                             <td></td>

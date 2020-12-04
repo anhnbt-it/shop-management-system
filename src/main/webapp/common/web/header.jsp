@@ -33,7 +33,7 @@
             <div class="col-md-3 d-flex justify-content-center ml-auto">
                 <ul class="nav navbar-nav ml-auto list-group list-group-horizontal">
                     <li class="nav-item active cart">
-                        <a class="nav-link" href="<c:url value="/cart?action=view"/>" style="color: #c6c8ca"><span class="badge badge-danger" id="amount">0</span><i class="fas fa-shopping-cart"></i></a>
+                        <a class="nav-link" href="<c:url value="/cart?action=view"/>" style="color: #c6c8ca"><span class="badge badge-danger" id="amount">${sessionScope.order.getList().size()}</span><i class="fas fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item dropdown active">
                         <c:choose>
@@ -48,7 +48,7 @@
                             </c:when>
                             <c:otherwise>
                                 <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="fas fa-user mr-1"></span> Welcome @
+                                    <span class="fas fa-user mr-1"></span> Welcome ${sessionScope.user.getName()}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="accountDropdown">
                                     <a class="dropdown-item" href="#">profile</a>

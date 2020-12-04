@@ -1,11 +1,12 @@
 package model.entities;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class Order {
     private int id;
-    private Timestamp orderDate;
+    private Date orderDate;
     private String status;
     private String comment;
     private int customer_id;
@@ -15,13 +16,13 @@ public class Order {
     public Order() {
     }
 
-    public Order(Timestamp orderDate, String status, String comment) {
+    public Order(Date orderDate, String status, String comment) {
         this.orderDate = orderDate;
         this.status = status;
         this.comment = comment;
     }
 
-    public Order(int id, Timestamp orderDate, String status) {
+    public Order(int id, Date orderDate, String status) {
         this.id = id;
         this.orderDate = orderDate;
         this.status = status;
@@ -35,11 +36,11 @@ public class Order {
         this.id = id;
     }
 
-    public Timestamp getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Timestamp orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 

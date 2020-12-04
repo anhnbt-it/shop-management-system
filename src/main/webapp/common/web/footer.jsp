@@ -103,6 +103,9 @@
         </div>
     </div>
 </div>
+
+</body>
+</html>
 <script>
     function loadDoc(id) {
         var xhttp = new XMLHttpRequest();
@@ -115,10 +118,5 @@
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("action=add&id=" + id);
     }
-    // $(document).ready(function () {
-    //     $('.toast').toast('show')
-    // });
 </script>
-</body>
-</html>
 

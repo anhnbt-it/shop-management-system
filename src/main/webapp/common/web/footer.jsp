@@ -7,77 +7,62 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<footer class="page-footer mdb-color pt-4">
+<footer class="pt-4">
     <div class="container text-center text-md-left">
-        <div class="row text-center text-md-left mt-3 pb-3">
+        <div class="row text-center text-md-left">
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Pet Shop</h6>
                 <p>Là lựa chọn hàng đầu cho các bạn muốn dở hữu một chú pet cưng tuyệt vời nhất, quý hiếm nhất.</p>
             </div>
-
-            <hr class="w-100 clearfix d-md-none">
-
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
-                <p>
-                    <a href="#!">Chó</a>
-                </p>
-                <p>
-                    <a href="#!">Mèo</a>
-                </p>
+                <ul class="list-unstyled">
+                    <li><a href="#">Chó</a></li>
+                    <li><a href="#">Mèo</a></li>
+                </ul>
             </div>
-            <hr class="w-100 clearfix d-md-none">
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Chính sách</h6>
-                <p>
-                    <a href="#!">Bảo vệ thông tin người dùng</a>
-                </p>
-                <p>
-                    <a href="#!">Giao hàng</a>
-                </p>
+                <ul class="list-unstyled">
+                    <li><a href="#">Bảo vệ thông tin người dùng</a></li>
+                    <li><a href="#">Giao hàng</a></li>
+                </ul>
             </div>
-            <hr class="w-100 clearfix d-md-none">
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                <p>
-                    <i class="fas fa-home mr-3"></i>123, Cầu Giấy, Hà Nội </p>
-                <p>
-                    <i class="fas fa-envelope mr-3"></i> PetShop@gmail.com</p>
-                <p>
-                    <i class="fas fa-phone mr-3"></i> 0123 456 789</p>
-                <p>
-                    <i class="fas fa-print mr-3"></i> 0123 456 789</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-home mr-3"></i>123, Cầu Giấy, Hà Nội</li>
+                    <li><i class="fas fa-envelope mr-3"></i> PetShop@gmail.com</li>
+                    <li><i class="fas fa-phone mr-3"></i> 0123 456 789</li>
+                    <li><i class="fas fa-envelope mr-3"></i> 0123 456 789</li>
+                </ul>
             </div>
         </div>
-        <hr>
-        <div class="row d-flex align-items-center">
+        <hr class="w-100 clearfix">
+        <div class="row">
             <div class="col-md-7 col-lg-8">
-                <p class="text-center text-md-left">© 2020 Copyright:
-                    <a href="#">
-                        <strong>Unknown.com</strong>
-                    </a>
-                </p>
+                <p class="text-center text-md-left">© 2020 Copyright <a href="#"><strong>Unknown.com</strong></a></p>
             </div>
             <div class="col-md-5 col-lg-4 ml-lg-0">
                 <div class="text-center text-md-right">
                     <ul class="list-unstyled list-inline">
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="#" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="#" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="#" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-google-plus-g"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="#" class="btn-floating btn-sm rgba-white-slight mx-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </li>
@@ -97,8 +82,6 @@
         </div>
     </div>
 </div>
-
-
 <script src="https://kit.fontawesome.com/06afc5370d.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

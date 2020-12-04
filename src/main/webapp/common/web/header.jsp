@@ -98,7 +98,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/lien-he"><span
+                        <a class="nav-link" href="${pageContext.request.contextPath}/contact"><span
                                 class="fas fa-phone mr-1"></span> Liên hệ</a>
                     </li>
                     <li class="nav-item dropdown">

@@ -72,15 +72,9 @@
         </div>
     </div>
 </footer>
-<!-- Wrapping element -->
-<div style="position: relative; min-height: 300px;">
-    <!-- Position toasts -->
-    <div style="position: absolute; top: 0; right: 0;">
-        <div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-animation="true" data-delay="10000"
-             data-autohide="true">
-            <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
-        </div>
-    </div>
+<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-animation="true" data-delay="10000"
+     data-autohide="true">
+    <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
 
 <!-- Bootstrap core JavaScript-->
@@ -91,6 +85,7 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+
     function addToCart(id) {
         $(document).ready(function () {
             var xhttp = new XMLHttpRequest();

@@ -7,7 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="pageTitle" scope="request" value="Add New Customer"/>
+<c:set var="pageTitle" scope="request" value="All Categories"/>
 <jsp:include page="../inc/header.jsp"></jsp:include>
 <jsp:include page="../inc/nav.jsp"></jsp:include>
 <div class="container-fluid">

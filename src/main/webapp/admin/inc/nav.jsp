@@ -21,7 +21,7 @@
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownOne">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/categories?act=index">All Categories</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/categories">All Categories</a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/categories?act=create">Add New Category</a>
                 </div>
             </li>
@@ -30,9 +30,9 @@
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownTwo">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/products?act=index">All Products</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/products">All Products</a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/products?act=create">Add
-                        New model.admin.Customer</a>
+                        New Product</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -40,8 +40,8 @@
                     <i class="fas fa-user"></i> Users
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownThree">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/customers?act=index">All Users</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/customers?act=create">Add New User</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/customers">All Customers</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/customers?act=create">Add New Customer</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

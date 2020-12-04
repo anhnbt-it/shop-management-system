@@ -72,11 +72,8 @@
         </div>
     </div>
 </footer>
-<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-animation="true" data-delay="10000"
-     data-autohide="true">
-    <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
-</div>
-
+<!-- The actual snackbar -->
+<div id="snackbar">Thêm vào giỏ hàng thành công..</div>
 <!-- Bootstrap core JavaScript-->
 <script src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/assets/js/bootstrap.bundle.min.js"></script>
@@ -92,7 +89,11 @@
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     $("#amount").html(this.responseText);
-                    $('.toast').toast('show')
+                    var x = document.getElementById("snackbar");
+                    // Add the "show" class to DIV
+                    x.className = "show";
+                    // After 3 seconds, remove the show class from DIV
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
                 }
             };
             xhttp.open("POST", "/cart", true);

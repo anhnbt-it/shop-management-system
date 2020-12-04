@@ -5,16 +5,11 @@
   Time: 9:34 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/libs.jsp" %>
-<html>
-<head>
-    <title>Home - Pet Shop</title>
-    <link href="<c:out value="/template/css/product/product.css"/>" rel="stylesheet">
-</head>
-<body>
-<%@include file="/common/web/header.jsp" %>
-<div class="container-fluid">
+<c:set var="pageTitle" scope="request" value="Add New Customer"/>
+<jsp:include page="/common/web/header.jsp"></jsp:include>
+<div class="container" style="padding-top: 175px;">
     <c:if test="${requestScope['discount'] != null}">
         <div class="row">
             <div class="col-sm-12">
@@ -82,7 +77,7 @@
                                   style="text-decoration-line: line-through;">$ ${product.getPrice()}</span>
                             <p class="card-text">${product.getDescription()}</p>
                         </div>
-                        <button class="btn btn-warning btn-block" onclick="loadDoc(${product.getId()})"><i
+                        <button class="btn btn-success btn-block text-white" onclick="loadDoc(${product.getId()})"><i
                                 class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
                         </button>
                     </div>
@@ -117,7 +112,7 @@
                                   style="text-decoration-line: line-through;">$ ${product.getPrice()}</span>
                             <p class="card-text">${product.getDescription()}</p>
                         </div>
-                            <button class="btn btn-warning btn-block" onclick="loadDoc(${product.getId()})"><i
+                            <button class="btn btn-success btn-block text-white" onclick="loadDoc(${product.getId()})"><i
                                     class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
                             </button>
                     </div>
@@ -167,5 +162,3 @@
     </div><!-- /.row -->
 </div><!-- /.container -->
 <%@include file="/common/web/footer.jsp" %>
-</body>
-</html>

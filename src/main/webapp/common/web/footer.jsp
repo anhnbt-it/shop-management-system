@@ -6,14 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/libs.jsp" %>
-<html>
-<head>
-    <title>Title</title>
-    <link href="<c:url value="/template/bootstrap/css/bootstrap.css"/>" rel="stylesheet">
-    <link href="<c:url value="/template/css/header-footer/footer.css"/>" rel="stylesheet">
-</head>
-<body>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <footer class="page-footer mdb-color pt-4">
     <div class="container text-center text-md-left">
         <div class="row text-center text-md-left mt-3 pb-3">
@@ -98,14 +91,24 @@
 <div style="position: relative; min-height: 300px;">
     <!-- Position toasts -->
     <div style="position: absolute; top: 0; right: 0;">
-        <div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-animation="true" data-delay="10000" data-autohide="true">
+        <div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-animation="true" data-delay="10000"
+             data-autohide="true">
             <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
         </div>
     </div>
 </div>
 
-</body>
-</html>
+
+<script src="https://kit.fontawesome.com/06afc5370d.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script>
     function loadDoc(id) {
         var xhttp = new XMLHttpRequest();
@@ -119,4 +122,5 @@
         xhttp.send("action=add&id=" + id);
     }
 </script>
-
+</body>
+</html>

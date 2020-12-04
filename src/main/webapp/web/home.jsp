@@ -6,20 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/libs.jsp"%>
+<%@include file="/common/libs.jsp" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Home - Pet Shop</title>
     <link href="<c:out value="/template/css/product/product.css"/>" rel="stylesheet">
 </head>
 <body>
-    <%@include file="/common/web/header.jsp"%>
-    <div class="container">
-
+<%@include file="/common/web/header.jsp" %>
+<div class="container">
+    <c:if test="${requestScope['discount'] != null}">
         <div class="row">
-
             <div class="col-sm-12">
-
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -28,18 +26,21 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <a href="/products?action=view&id=${requestScope.discount.get(0).getId()}">
-                                <img class="d-block " src="<c:out value='${requestScope["discount"].get(0).getImg()}'/>" width="1100" height="300" alt="First slide">
+                            <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(0).getId()}">
+                                <img class="d-block " src="<c:out value='${requestScope["discount"].get(0).getImg()}'/>"
+                                     width="1100" height="300" alt="First slide">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="/products?action=view&id=${requestScope.discount.get(1).getId()}">
-                                <img class="d-block" src="<c:out value='${requestScope["discount"].get(1).getImg()}'/>" width="1100" height="300" alt="Second slide">
+                            <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(1).getId()}">
+                                <img class="d-block" src="<c:out value='${requestScope["discount"].get(1).getImg()}'/>"
+                                     width="1100" height="300" alt="Second slide">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="/products?action=view&id=${requestScope.discount.get(2).getId()}">
-                                <img class="d-block" src="<c:out value='${requestScope["discount"].get(2).getImg()}'/>" width="1100" height="300" alt="Third slide">
+                            <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(2).getId()}">
+                                <img class="d-block" src="<c:out value='${requestScope["discount"].get(2).getImg()}'/>"
+                                     width="1100" height="300" alt="Third slide">
                             </a>
                         </div>
                     </div>
@@ -152,16 +153,10 @@
 
 
                 </div>
-                <!-- row 3-->
-
             </div>
-            <!-- /.col-lg-12 -->
-
         </div>
-        <!-- /.row -->
-
-    </div>
-    </div>
-    <%@include file="/common/web/footer.jsp"%>
+    </div><!-- /.row -->
+</div>
+<%@include file="/common/web/footer.jsp" %>
 </body>
 </html>

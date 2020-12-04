@@ -28,7 +28,7 @@
                         </div>
                         <div class="carousel-item">
                             <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(1).getId()}">
-                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide1.png"
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide1.jpg"
                                      width="1100" height="300" alt="Second slide">
                             </a>
                         </div>

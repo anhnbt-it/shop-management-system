@@ -44,6 +44,15 @@
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/customers?act=create">Add New User</a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFour" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i> Orders
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownFour">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/orders?act=index">All Orders</a>
+<%--                    <a class="dropdown-item" href="${pageContext.request.contextPath}/administrator/customers?act=create">Add New User</a>--%>
+                </div>
+            </li>
         </ul>
         <a class="nav-link" href="${pageContext.request.contextPath}/administrator/sign-out"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Sign out</a>
     </div>

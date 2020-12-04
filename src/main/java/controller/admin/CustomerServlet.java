@@ -70,6 +70,7 @@ public class CustomerServlet extends HttpServlet {
                     case "search":
                         searchCustomer(req, resp);
                         break;
+
                     default:
                         showAllCustomers(req, resp);
                 }

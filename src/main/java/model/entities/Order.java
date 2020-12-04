@@ -6,26 +6,53 @@ import java.util.List;
 
 public class Order {
     private int id;
-    private Date orderDate;
+    private Timestamp orderDate;
     private String status;
     private String comment;
     private int customer_id;
     private List<OrderDetail> list;
     private double totalOrder;
+    private String customerName;
 
     public Order() {
     }
 
-    public Order(Date orderDate, String status, String comment) {
+    public Order(Timestamp orderDate, String status, String comment) {
         this.orderDate = orderDate;
         this.status = status;
         this.comment = comment;
     }
 
-    public Order(int id, Date orderDate, String status) {
+    public Order(int id, Timestamp orderDate, String status) {
         this.id = id;
         this.orderDate = orderDate;
         this.status = status;
+    }
+
+    public Order(int id, Timestamp orderDate, String status, String comment, int customer_id) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.comment = comment;
+        this.customer_id = customer_id;
+    }
+
+    public Order(int id, Timestamp orderDate, String status, String comment, int customer_id, double totalOrder) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.comment = comment;
+        this.customer_id = customer_id;
+        this.totalOrder = totalOrder;
+    }
+
+    public Order(int id, Timestamp orderDate, String status, String comment, int customer_id, String customerName) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.comment = comment;
+        this.customer_id = customer_id;
+        this.customerName = customerName;
     }
 
     public int getId() {
@@ -36,11 +63,11 @@ public class Order {
         this.id = id;
     }
 
-    public Date getOrderDate() {
+    public Timestamp getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(Timestamp orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -82,5 +109,13 @@ public class Order {
 
     public void setTotalOrder(double totalOrder) {
         this.totalOrder = totalOrder;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 }

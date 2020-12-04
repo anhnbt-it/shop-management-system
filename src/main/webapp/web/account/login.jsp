@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="password">Password <span
                                     class="text-danger">*</span>:</label>
-                            <input type="text" class="form-control" name="password" id="password"
+                            <input type="password" class="form-control" name="password" id="password"
                                    placeholder="Password" required>
                         </div>
                         <div class="form-group">

@@ -66,7 +66,7 @@
                                 <div class="discount">
                                     <p>- ${product.getDiscount()}% </p>
                                 </div>
-                                <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product1.getImg()}"/>" width="700" height="200" alt="loading"></a>
+                                <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product.getImg()}"/>" width="700" height="200" alt="loading"></a>
                                 <div class="card-body cardBody">
                                     <h4 class="card-title">
                                         <a href="/products?action=view&id=${product.getId()}">${product.getName()}</a>
@@ -97,7 +97,7 @@
                                 <div class="discount">
                                     <p>- ${product.getDiscount()}% </p>
                                 </div>
-                                <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product2.getImg()}"/>" width="700" height="200" alt="loading"></a>
+                                <a href="/products?action=view&id=${product.getId()}"><img class="card-img-top" src="<c:url value="${product.getImg()}"/>" width="700" height="200" alt="loading"></a>
                                 <div class="card-body cardBody">
                                     <h4 class="card-title">
                                         <a href="/products?action=view&id=${product.getId()}">${product.getName()}</a>

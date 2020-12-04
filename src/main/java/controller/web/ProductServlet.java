@@ -61,7 +61,7 @@ public class ProductServlet extends HttpServlet {
                 products =productDao.sort_Product_P_A();
 
             } else {
-
+                products = productDao.selectAllProduct();
             }
 
         } else {
@@ -78,7 +78,6 @@ public class ProductServlet extends HttpServlet {
 
             } else if (sortByPrice.equals("3")) {
                 products = productDao.sort_Product_Cate_PD(categoryId);
-
 
             } else if (sortByPrice.equals("4")) {
                 products = productDao.sort_Product_Cate_PA(categoryId);

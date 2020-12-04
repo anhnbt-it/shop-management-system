@@ -194,7 +194,7 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Order order = (Order) session.getAttribute("order");
         ArrayList<Product> products = productDao.selectAllProduct();
-        Customer customer;
+        Customer customer = null;
         boolean canInsert = true;
         if (session.getAttribute("user")==null) {
             System.err.println("Phai dang nhap");
@@ -212,7 +212,7 @@ public class CartServlet extends HttpServlet {
         }
          if(canInsert) {
              try {
-                 order.setCustomer_id(1);
+                 order.setCustomer_id(customer.getId());
                  orderDao.insertOrder(order);
                  int orderId = orderDao.selectTopIdOrder().getId();
                  for (OrderDetail orderDetail: order.getList()) {

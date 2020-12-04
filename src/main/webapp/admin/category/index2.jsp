@@ -17,7 +17,7 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold"><i class="fas fa-list"></i> ${pageTitle} <span
                             class="badge badge-secondary">${requestScope['countCustomers']}</span> <a
-                            href="${pageContext.request.contextPath}/administrator/customers?act=create"
+                            href="${pageContext.request.contextPath}/administrator/categories?act=create"
                             class="btn btn-primary btn-sm"
                             data-toggle="tooltip" data-placement="top" title="Add New"><i class="fas fa-plus"></i> Add
                         New</a>

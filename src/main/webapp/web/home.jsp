@@ -22,7 +22,7 @@
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(0).getId()}">
-                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide3.jsp"
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide3.jpg"
                                      width="1100" height="300" alt="First slide">
                             </a>
                         </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="carousel-item">
                             <a href="${pageContext.request.contextPath}/products?action=view&id=${requestScope['discount'].get(2).getId()}">
-                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide2.jsp"
+                                <img class="img-fluid" src="${pageContext.request.contextPath}/img/slide2.jpg"
                                      width="1100" height="300" alt="Third slide">
                             </a>
                         </div>

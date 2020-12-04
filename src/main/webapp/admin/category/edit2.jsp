@@ -5,11 +5,11 @@
   Time: 13:58
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="pageTitle" scope="request" value="Edit Category: ${category.getName()}"/>
+<c:set var="pageTitle" scope="request" value="Add New Customer"/>
 <jsp:include page="../inc/header.jsp"></jsp:include>
-<!-- Begin Page Content -->
+<jsp:include page="../inc/nav.jsp"></jsp:include>
 <div class="container-fluid">
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -70,34 +70,7 @@
         </form>
     </div><!-- /.card -->
 
-</div>
-<!-- /.container-fluid -->
+</div><!-- /.container-fluid -->
+<jsp:include page="../inc/copyright.jsp"></jsp:include>
+<jsp:include page="../inc/scripts.jsp"></jsp:include>
 <jsp:include page="../inc/footer.jsp"></jsp:include>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>Edit</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<form action="/administrator/category" method="post">--%>
-<%--    <input type="hidden" name="act" value="update2">--%>
-<%--    <input type="hidden" name="id" id="id" value="${category.getId()}">--%>
-<%--    <label for="name">Tên danh mục</label>--%>
-<%--<input type="text" name="name" id="name" value="${category.getName()}">--%>
-<%--<br>--%>
-<%--<label for="desc">Mô tả</label>--%>
-<%--<input type="text" name="desc" id="desc" value="${category.getDesc()}">--%>
-<%--<br>--%>
-<%--<label for="img">Ảnh</label>--%>
-<%--<input type="file" name="img" id="img" value="${category.getImg()}">--%>
-<%--<br>--%>
-<%--<label for="type_id">Loại</label>--%>
-<%--<select name="type_id" id="type_id">--%>
-<%--    <option value="1" <c:if test="${category.getType_id()==1}">selected</c:if>>Chó</option>--%>
-<%--    <option value="2" <c:if test="${category.getType_id()==2}">selected</c:if>>Mòe</option>--%>
-<%--</select>--%>
-<%--<br>--%>
-<%--<button type="submit">Save</button>--%>
-<%--<a href="/administrator/category">Quay lai</a>--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--</html>--%>

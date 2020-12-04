@@ -7,7 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="pageTitle" scope="request" value="All Category"/>
+<c:set var="pageTitle" scope="request" value="Add New Customer"/>
 <jsp:include page="../inc/header.jsp"></jsp:include>
 <jsp:include page="../inc/nav.jsp"></jsp:include>
 <div class="container-fluid">
@@ -69,8 +69,7 @@
             </div>
         </div>
     </div><!-- /.row -->
-</div>
-<!-- /.container-fluid -->
+</div><!-- /.container-fluid -->
 <jsp:include page="../inc/copyright.jsp"></jsp:include>
 <jsp:include page="../inc/scripts.jsp"></jsp:include>
 <jsp:include page="../inc/footer.jsp"></jsp:include>

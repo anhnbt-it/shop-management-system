@@ -7,9 +7,9 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="pageTitle" scope="request" value="Add New Product"/>
+<c:set var="pageTitle" scope="request" value="Add New Customer"/>
 <jsp:include page="../inc/header.jsp"></jsp:include>
-<!-- Begin Page Content -->
+<jsp:include page="../inc/nav.jsp"></jsp:include>
 <div class="container-fluid">
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -95,7 +95,7 @@
             </div>
         </form>
     </div><!-- /.card -->
-
-</div>
-<!-- /.container-fluid -->
+</div><!-- /.container-fluid -->
+<jsp:include page="../inc/copyright.jsp"></jsp:include>
+<jsp:include page="../inc/scripts.jsp"></jsp:include>
 <jsp:include page="../inc/footer.jsp"></jsp:include>

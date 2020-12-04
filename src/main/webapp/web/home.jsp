@@ -7,7 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="pageTitle" scope="request" value="Add New Customer"/>
+<c:set var="pageTitle" scope="request" value="Home"/>
 <jsp:include page="/common/web/header.jsp"></jsp:include>
 <div class="container" style="padding-top: 180px;">
     <c:if test="${requestScope['discount'] != null}">

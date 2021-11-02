@@ -1,8 +1,8 @@
-package controller.admin.account;
+package controller.web.account;
 
 import dao.DBConnection;
-import dao.admin.AdminDao;
-import model.admin.Admin;
+import dao.CustomerDao;
+import model.admin.Customer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,39 +13,38 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(name = "AdminLoginServlet", urlPatterns = "/administrator/login")
-public class AdminLoginServlet extends HttpServlet {
-    private AdminDao adminDao;
+@WebServlet(name = "LoginServlet", urlPatterns = "/account/login")
+public class LoginServlet extends HttpServlet {
+    private CustomerDao customerDao;
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         Connection conn = DBConnection.getConnection();
-        adminDao = new AdminDao(conn);
+        customerDao = new CustomerDao(conn);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
 
-        String username = req.getParameter("username");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        Admin admin = adminDao.getLoggedCustomer(username, password);
-        if (admin != null) {
-            session.setAttribute("admin", admin);
-            resp.sendRedirect("/administrator/customers");
+        Customer customer = customerDao.getLoggedCustomer(email, password);
+        if (customer != null) {
+            session.setAttribute("user", customer);
+            resp.sendRedirect("/home");
         } else {
             session.setAttribute("msg", "<div class=\"alert alert-danger\">Invalid username or password</div>");
-            resp.sendRedirect("/administrator/login");
+            resp.sendRedirect("/account/login");
         }
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Kiểm tra trạng thái đăng nhập
         HttpSession session = req.getSession();
         if (session.getAttribute("user") != null) {
             resp.sendRedirect("/home");
         } else {
-            req.getRequestDispatcher("/admin/account/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/web/account/login.jsp").forward(req, resp);
         }
     }
 }

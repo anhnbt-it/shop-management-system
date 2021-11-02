@@ -7,39 +7,46 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<c:set var="pageTitle" scope="request" value="Admin Login"/>
+<c:set var="pageTitle" scope="request" value="Account Login"/>
 <jsp:include page="../inc/header.jsp"></jsp:include>
-<div class="container" style="padding-top: 40px;padding-bottom: 40px;">
+<div class="container-fluid">
     <div class="row d-flex justify-content-center align-self-center">
         <div class="col-md-6">
-            <div class="card shadow mb-4 login-container text-white">
-                <form action="${pageContext.request.contextPath}/administrator/login" method="post">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold">${pageTitle}</h6>
+                </div>
+                <form action="${pageContext.request.contextPath}/account/login" method="post">
                     <div class="card-body px-4">
-                        <img class="w-25 my-4 rounded mx-auto d-block" src="${pageContext.request.contextPath}/admin/assets/images/logo.png" alt="Logo CodeGym">
-                        <h6 class="font-weight-bold text-center">${pageTitle}</h6>
                         <c:if test="${sessionScope['msg'] != null}">
                             <%=session.getAttribute("msg")%>
                             <%session.removeAttribute("msg");%>
                         </c:if>
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username"
-                                   placeholder="Username" required>
+                            <label for="email">E-Mail Address <span
+                                    class="text-danger">*</span>:</label>
+                            <input type="email" class="form-control" name="email" id="email"
+                                   placeholder="E-Mail Address" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Password <span
+                                    class="text-danger">*</span>:</label>
                             <input type="password" class="form-control" name="password" id="password"
                                    placeholder="Password" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="tooltip" data-placement="top"
+                            <button type="submit" class="btn btn-primary btn-block" data-toggle="tooltip" data-placement="top"
                                     title="Save">Login
                             </button>
                         </div>
                     </div><!-- /.card-body-->
+                    <div class="card-footer px-4">
+                        <a href="${pageContext.request.contextPath}/account/register" class="btn btn-success btn-block btn-sm">Create New Account</a>
+                    </div>
                 </form>
             </div><!-- /.card -->
         </div><!--- /.col-md-6 -->
     </div><!-- /.row -->
 </div><!-- /.container-fluid -->
 <jsp:include page="../inc/footer.jsp"></jsp:include>
+

@@ -2,6 +2,5 @@
 /.idea/
 /build/
 /src/main/webapp/admin/assets/
-/src/main/java/dao/DBConnection.java
 /src/main/webapp/template/
-/src/main/java/controller/web/test.java
+/src/main/java/com.codegym.controller/web/test.java
